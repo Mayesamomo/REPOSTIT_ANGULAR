@@ -1,0 +1,17 @@
+<!-- Categories Widget -->
+<div class="card my-4" *ngFor='let item of communities | keyvalue'>
+    <h5 class="card-header active">Communities</h5>
+    <div class="card-body"></div>
+    <ul class="list-group" *ngFor=' let c of item.value; let i=index'>
+        <li class="list-group-item">{{c.community_name}}</li>
+
+    </ul>
+</div>
+<!-- Side Widget -->
+<div class="card my-4">
+    <h5 class="card-header">Side Widget</h5>
+    <div class="card-body">
+        You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap
+        4 card containers!
+    </div>
+</div>

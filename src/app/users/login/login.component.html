@@ -1,0 +1,40 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <h3 class="card-header text-center">User Login</h3>
+        <!-- Tabs Titles -->
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="http://www.hit4hit.org/img/login/user-icon-6.png" id="icon" alt="User Icon" />
+        </div>
+        <!-- Login Form -->
+        <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
+            <!--username-->
+            <div class="form-group">
+                <input type="text" formControlName="username" id="login" class="fadeIn second" placeholder="login"
+                    [ngClass]="{ 'is-invalid': submitted && fval.username.errors }" placeholder="Enter Username" />
+                <div *ngIf="submitted && fval.username.errors" class="invalid-feedback">
+                    <div *ngIf="fval.username.errors.required">Username is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" formControlName="password" id="password" class="fadeIn third"
+                    placeholder="password" [ngClass]="{ 'is-invalid': submitted && fval.password.errors }"
+                    placeholder="Enter password here" autocomplete="off" />
+                <div *ngIf="submitted && fval.password.errors" class="invalid-feedback">
+                    <div *ngIf="fval.password.errors.required">Password is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary fadeIn fourth">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Login
+                </button>
+                <a routerLink="/register" class="btn btn-link">Register</a>
+            </div>
+        </form>
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <h3 class="card-header text-center">User Registration</h3>
+        <!-- Tabs Titles -->
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="http://www.hit4hit.org/img/login/user-icon-6.png" id="icon" alt="User Icon" />
+        </div>
+        <!-- Login Form -->
+        <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()">
+            <div class="form-group">
+                <input type="text" formControlName="fullName" id="login" class="form-control fadeIn first"
+                    placeholder="First and Last name" [ngClass]="{ 'is-invalid': submitted && fval.fullName.errors }"
+                    placeholder="Enter First and last Name here" />
+                <div *ngIf="submitted && fval.fullName.errors" class="invalid-feedback">
+                    <div *ngIf="fval.fullName.errors.required">First and last Name are required</div>
+                </div>
+            </div>
+            <!--username-->
+            <div class="form-group">
+                <input type="text" formControlName="username" id="login" class=" form-control fadeIn second"
+                    placeholder="Username" [ngClass]="{ 'is-invalid': submitted && fval.username.errors }"
+                    placeholder="Enter Username" />
+                <div *ngIf="submitted && fval.username.errors" class="invalid-feedback">
+                    <div *ngIf="fval.username.errors.required">Username is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="email" formControlName="email" id="email" class="form-control fadeIn third"
+                    placeholder="Email" [ngClass]="{ 'is-invalid': submitted && fval.email.errors }"
+                    placeholder="Enter email here" />
+                <div *ngIf="submitted && fval.email.errors" class="invalid-feedback">
+                    <div *ngIf="fval.email.errors.required">Email is required</div>
+                    <div *ngIf="fval.email.errors.email">Enter valid email address</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" formControlName="password" id="password" class=" form-control fadeIn third"
+                    placeholder="Password" [ngClass]="{ 'is-invalid': submitted && fval.password.errors }"
+                    placeholder="Enter password here" autocomplete="off" />
+                <div *ngIf="submitted && fval.password.errors" class="invalid-feedback">
+                    <div *ngIf="fval.password.errors.required">Password is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Register
+                </button>
+                <a routerLink="/login" class="btn btn-link">Login to continue</a>
+            </div>
+        </form>
+    </div>
+</div>

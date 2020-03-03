@@ -1,0 +1,50 @@
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8" *ngFor='let item of post | keyvalue'>
+            <!-- Blog Post -->
+            <div class="card mb-4" *ngFor='let p of item.value; let i =index' (click)='postSelected(i)'
+                [class.active]='i==selected'>
+                <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                <div class="card-body">
+                    <h2 class="card-title">{{p.post_title}}</h2>
+                    <p class="card-text">{{p.post_description}}</p>
+                    <a routerLink="/single-post" href="#" class="btn btn-primary" routerLink="/single-post">Read More
+                        &rarr;</a>
+                </div>
+                <div class="card-footer text-muted">
+                    {{p.post_date}}
+                    <a href="#">{{p.user_id }}</a>
+                </div>
+            </div>
+            <!-- Pagination -->
+            <ul class="pagination justify-content-center mb-4">
+                <li class="page-item">
+                    <a class="page-link" href="#">&larr; Older</a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">Newer &rarr;</a>
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+            <app-sidebar></app-sidebar>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+</footer>
