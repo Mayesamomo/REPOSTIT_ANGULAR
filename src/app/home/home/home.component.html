@@ -2,22 +2,25 @@
 <div class="container">
     <div class="row">
         <!-- Blog Entries Column -->
-        <div class="col-md-8" *ngFor='let item of post | keyvalue'>
+        <div class="col-md-8">
             <!-- Blog Post -->
-            <div class="card mb-4" *ngFor='let p of item.value; let i =index' (click)='postSelected(i)'
+            <div class="card mb-4" *ngFor='let p of post; let i =index' (click)='postSelected(i)'
                 [class.active]='i==selected'>
                 <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                 <div class="card-body">
                     <h2 class="card-title">{{p.post_title}}</h2>
-                    <p class="card-text">{{p.post_description}}</p>
+                    <p class="card-text">{{p.post_desc}}</p>
+
                     <a routerLink="/single-post" href="#" class="btn btn-primary" routerLink="/single-post">Read More
                         &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
                     {{p.post_date}}
                     <a href="#">{{p.user_id }}</a>
+                    <a style="margin-left: 1em;">comments<i class="far fa-comment"></i></a>
                 </div>
             </div>
+
             <!-- Pagination -->
             <ul class="pagination justify-content-center mb-4">
                 <li class="page-item">

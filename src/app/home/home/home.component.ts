@@ -3,7 +3,6 @@ import { PostService } from 'src/app/services/post.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { Post } from 'src/app/DTO/post';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -16,11 +15,10 @@ export class HomeComponent implements OnInit {
   post: Post[];
   errorMsg: string = null;
   selected: number;
+  toastr: any;
   constructor(private postService: PostService,
     private authenticationService: AuthService,
-    private router: Router,
-    private toastr: ToastrService) {
-    this.currentUser = localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')) : '';
+    private router: Router) {
   }
   //onload posts are listed
   ngOnInit(): void {
@@ -35,7 +33,7 @@ export class HomeComponent implements OnInit {
       });
   }
   postSelected(i: number) {
-    console.log("Row Selected = " + i);
+    console.log(i);
     this.selected = i;
     console.log(this.post[i]);
     this.selectedPost.emit(this.post[i]);

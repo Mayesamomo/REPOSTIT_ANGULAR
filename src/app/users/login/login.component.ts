@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -42,7 +41,7 @@ export class LoginComponent implements OnInit {
     this.authservice.login(this.fval.username.value, this.fval.password.value)
       .subscribe(
         data => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/home']);
           this.isError = false;
         },
         error => {

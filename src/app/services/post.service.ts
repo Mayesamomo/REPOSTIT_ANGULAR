@@ -12,7 +12,7 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   getAllPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>('http://localhost:8080/repostitRestServer/webresources/post/getPosts').pipe(
+    return this.http.get<Post[]>('http://localhost:8080/RepostApi/webresources/Post/ActivePosts').pipe(
       tap(data => { this.posts = data; })
     );
   }

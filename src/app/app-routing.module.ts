@@ -6,6 +6,10 @@ import { PostAddComponent } from './posts/post-add/post-add.component';
 import { PostEditComponent } from './posts/post-edit/post-edit.component';
 import { LoginComponent } from './users/login/login.component';
 import { RegisterComponent } from './users/register/register.component';
+import { PageNotFoundComponent } from './errorpage/page-not-found/page-not-found.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserprofileComponent } from './users/userprofile/userprofile.component';
+import { AuthGuard } from './security/auth.guard';
 
 
 const routes: Routes = [
@@ -16,6 +20,9 @@ const routes: Routes = [
   { path: 'posts/:id', component: PostEditComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'errorpage', component: PageNotFoundComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'user-profile/:id', component: UserprofileComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

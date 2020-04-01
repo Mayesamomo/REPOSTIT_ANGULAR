@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommunityService } from '../services/community.service';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Community } from '../DTO/community';
 import { Post } from '../DTO/post';
 
@@ -19,7 +18,7 @@ export class SidebarComponent implements OnInit {
   constructor(
     private comService: CommunityService,
     private router: Router,
-    private toastr: ToastrService) {
+  ) {
     this.currentUser = localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')) : '';
   }
 
@@ -30,7 +29,6 @@ export class SidebarComponent implements OnInit {
       this.communities = data;
     },
       err => {
-        this.toastr.error("Error = ", err.message);
         this.errorMsg = err.message
       });
   }

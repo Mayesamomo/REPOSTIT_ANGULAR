@@ -9,15 +9,18 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  currentUser: Users;
+
   constructor(private router: Router,
     private authenticationService: AuthService) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
   ngOnInit(): void {
   }
+  isLoggedIn() {
+    this.authenticationService.loggedIn
+  }
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
+
 }
